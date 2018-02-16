@@ -1,0 +1,27 @@
+	<ng-container *ngIf="is_ready()" >
+
+		<div class="music-row-song-header">
+			<h3>{{get_title()}}</h3>
+			<h4>{{get_date() | formatSongDate}}</h4>
+			<p>{{get_intro_paragraph()}}</p>
+		</div>
+
+		<div class="music-layout-row">
+			
+			<div class="music-media music-layout-right">
+<!--
+				<audio controls src="{{get_audio_url()}}" id="audio-plugin"></audio>
+-->
+				<img src="{{get_image_url()}}" alt="{{get_image_title()}}" title="{{get_image_title()}}"/>
+			</div>
+
+			<div class="music-main-text music-layout-left" [innerHtml]="get_main_text() | bypassHtmlSanitizer"></div>
+
+			<div class="music-credits music-layout-right">
+
+				<h5>Credits and stuff:</h5>
+
+				<div [innerHTML]="get_credits() | bypassHtmlSanitizer"></div>
+			</div>
+		</div>
+	</ng-container>

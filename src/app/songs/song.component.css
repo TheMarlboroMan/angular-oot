@@ -1,0 +1,61 @@
+/* layout of the center section */
+
+.music-layout-left {padding-right: 15px; padding-left: 15px;}
+.music-layout-right {padding-right: 15px; padding-left: 15px;}
+@media (min-width: 992px) {
+	.music-layout-row {overflow: hidden;}
+	.music-layout-left {float: left; width: 58.333333%; min-height: 1px; padding-right: 15px; padding-left: 15px;}
+	.music-layout-right {float: right; width: 41.666667%; min-height: 1px; padding-right: 15px; padding-left: 15px;}
+}
+
+/* song header */
+
+.music-row-song-header {border-bottom: 0.2rem solid #ccc;}
+.music-row-song-header h3 {color: #88bbd6; font-weight: bold; }
+.music-row-song-header h4 {font-weight: normal; font-style: italic;}
+.music-row-song-header h4:before {content: '[';}
+.music-row-song-header h4:after {content: ']';}
+.music-row-song-header p {font-style: italic;}
+
+@media (min-width: 992px) {
+	.music-row-song-header {padding: 2rem 1rem; }
+	.music-row-song-header h3 {display: inline; font-size: 2.5rem;}
+	.music-row-song-header h4 {display: inline; font-size: 1.9rem; margin-left: 3rem;}
+	.music-row-song-header p {padding-top: 2rem;}
+}
+@media (max-width: 992px) {
+	.music-row-song-header {padding: 1rem; }
+	.music-row-song-header h3 {display: block; text-align: center;}
+	.music-row-song-header h4 {display: block; text-align: center;}
+}
+
+/* body */
+
+@media (min-width: 992px) {
+	.music-main-text {padding: 3rem 1rem;}
+}
+@media (max-width: 992px) {
+	.music-main-text {padding: 1rem;}
+}
+
+/* media */
+
+.music-media audio {display: block;}
+.music-media img {display: block; width: 90%; border: 0.3rem solid #88bbd6; object-fit: cover;}
+
+@media (min-width: 992px) {
+	.music-media audio {margin: 4rem auto;}
+	.music-media img {margin: 2rem auto 2rem auto; }
+}
+@media (max-width: 992px) {
+	.music-media audio {margin: 1rem auto;}
+	.music-media img {margin: auto ;}
+}
+
+/* credits */
+
+.music-credits {padding-bottom: 1rem;}
+.music-credits h5 {font-size: 1.7rem; font-style: italic; text-align: center; display: block; margin-bottom: 1rem;}
+.music-credits p {font-size: 1rem;}
+.music-credits ul {padding-left: 2rem; font-size: 1rem; list-style: disc;}
+
