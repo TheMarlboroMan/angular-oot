@@ -10,6 +10,8 @@ ul li a:hover, nav a:hover {color: #fff;}
 
 /* body container */
 
+.music-container {min-height: 100vh;}
+
 @media (min-width: 992px) {
 	.music-container {width: 992px; margin: auto; padding: 8rem 2rem 0rem 2rem; font-size: 1.2rem;}
 }

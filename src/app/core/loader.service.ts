@@ -1,6 +1,8 @@
 import {Injectable} 		from '@angular/core';
 import {LoaderComponent}	from '../layout/loader.component';
 
+/* This is actually a lazy solution ... */
+
 @Injectable()
 export class LoaderService {
 
@@ -16,8 +18,6 @@ export class LoaderService {
 	}
 
 	public	set_loading(value:boolean) {
-
-		console.log("Someone called the service and told it to "+value);
 
 		if(!this.component) {
 			throw new Error("Component not registered in LoaderService");

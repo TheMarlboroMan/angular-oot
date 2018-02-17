@@ -13,7 +13,7 @@ this is much too specific.
 })
 export class LoaderComponent {
 
-	private	loading:boolean=true;
+	private	loading:boolean=false;
 
 	public	constructor(ls:LoaderService) {
 

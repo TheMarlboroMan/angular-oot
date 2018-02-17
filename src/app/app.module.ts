@@ -10,6 +10,7 @@ import {LayoutModule} 	from './layout/layout.module';
 import {SongsModule} 	from './songs/songs.module';
 import {AppRouting}	from './app.routing';
 import {CoreModule} 	from './core/core.module';
+import {PublicModule}	from './public/public.module';
 
 @NgModule({
 	declarations: [
@@ -21,6 +22,7 @@ import {CoreModule} 	from './core/core.module';
 		LayoutModule,
 		SongsModule,
 		HttpClientModule,
+		PublicModule,
 		CoreModule.forRoot(),
 		AppRouting,
 	],

@@ -6,9 +6,10 @@
 		</header>
 
 		<nav>
-			<a href="#">Newest</a>
-			<a href="#">Next</a>
-			<a href="#">Previous</a>
-			<a href="#">All</a>
+			<!-- Remember to import the Routermodule both in the ts file and the imports key of the module! -->
+			<a routerLink="newest">Newest</a>
+			<a *ngIf="is_next()" [routerLink]="['song', get_next()]">Next</a>
+			<a *ngIf="is_previous()" [routerLink]="['song', get_previous()]">Previous</a>
+			<a routerLink="all">All</a>
 		</nav>
 	</div>

@@ -1,8 +1,9 @@
 import {NgModule, Optional, SkipSelf, ModuleWithProviders} from '@angular/core';
 
-import {SongService} 	from './song.service';
-import {LoaderService}	from './loader.service';
+import {SongService} 		from './song.service';
+import {LoaderService}		from './loader.service';
 import {WindowTitleService}	from './window-title.service';
+import {SongNavigationService}	from './song-navigation.service';
 
 @NgModule({
 })
@@ -14,6 +15,7 @@ export class CoreModule {
 				SongService, 
 				LoaderService,
 				WindowTitleService,
+				SongNavigationService
 			]
 		};
 	}

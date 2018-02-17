@@ -3,11 +3,12 @@ import {ActivatedRoute, UrlSegment, Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable'
 import 'rxjs/add/operator/switchMap';
 
-import {BypassHtmlSanitizerPipe} 		from '../shared/bypass-html-sanitizer.pipe';
+import {BypassHtmlSanitizerPipe} 			from '../shared/bypass-html-sanitizer.pipe';
 
-import {SongService, SingleSongResponse} 	from '../core/song.service';
-import {LoaderService} 				from '../core/loader.service';
-import {WindowTitleService}			from '../core/window-title.service';
+import {SongService, SingleSongResponse} 		from '../core/song.service';
+import {LoaderService} 					from '../core/loader.service';
+import {WindowTitleService}				from '../core/window-title.service';
+import {SongNavigationService, SongNavigationModel}	from '../core/song-navigation.service';
 
 import {SongModel} from './song.model';
 
@@ -18,8 +19,6 @@ import {SongModel} from './song.model';
 })
 export class SongComponent implements OnInit {
 
-	//TODO: Do this shit with a service and get over it. Everyone registers to it and everybody wins.
-/*	@Output() loading_state=new EventEmitter<boolean>();*/
 	private	song:SongModel=null;
 
 	public	constructor(
@@ -27,11 +26,11 @@ export class SongComponent implements OnInit {
 		private r:Router,
 		private ss:SongService,
 		private	ls:LoaderService,
-		private	wts:WindowTitleService){
+		private	wts:WindowTitleService,
+		private	sns:SongNavigationService){
 
 	}
 
-	//TODO: I should think a bit about this part... We are loading, right?. Should show the loader... Oh damn.
 	public	is_ready():boolean		{return null!==this.song;}
 	public	get_title():string 		{return this.song.title;}
 	public	get_date():Date 		{return this.song.date;}
@@ -44,8 +43,8 @@ export class SongComponent implements OnInit {
 
 	public	ngOnInit():void {
 
+		//TODO: Perhaps we can centralise this.  Check the WindowTitleService.
 		this.ls.set_loading(true);
-
 		window.scrollTo(0,0);
 
 		this.actroute.url.
@@ -66,17 +65,16 @@ export class SongComponent implements OnInit {
 				let p=null===slug ? this.ss.get_latest() : this.ss.get_by_slug(slug);
 				p.then( (data:SingleSongResponse) => {
 					this.song=data.model;
-					//TODO: Bubble up the next and previous by emitting a message...
-					//TODO: Perhaps we should always load the first and last too... 
+
+					//TODO: What happens when we navigate to other pages that do not load this data???.
 					//TODO: Or maybe that's another service???
 
 					this.wts.set_title(this.song.title);
+					this.sns.set_song_navigation(new SongNavigationModel(data.previous, data.next));
 					this.ls.set_loading(false);
 				})
 				.catch( (err) => {
-					console.log("FUCK YOU ", err);
-					//TODO.
-					//this.r.navigate(['404-not-found']);
+					this.r.navigate(['404']);
 				});
 			});
 	}
